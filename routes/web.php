@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PemasukanController;
+use App\Http\Controllers\PengeluaranController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +25,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashbord', [DashboardController::class, 'index'])->name('dashbord');
+Route::get('/pemasukan', [PemasukanController::class, 'index'])->name('pemasukan');
+Route::get('/pengeluaran', [PengeluaranController::class, 'index'])->name('pengeluaran');
+
