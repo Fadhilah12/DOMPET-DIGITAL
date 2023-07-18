@@ -28,3 +28,4 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/dashbord', [DashboardController::class, 'index'])->name('dashbord');
 Route::get('/pemasukan', [PemasukanController::class, 'index'])->name('pemasukan');
 Route::get('/pengeluaran', [PengeluaranController::class, 'index'])->name('pengeluaran');
+
