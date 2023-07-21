@@ -14,7 +14,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
       <!-- Styles -->
       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+      <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
       <!--Custom Scripts and Css-->
 
     <!-- Scripts -->
