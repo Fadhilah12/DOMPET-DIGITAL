@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $id = Auth::user()->id;
+        $data = DB::table('users')
+                ->where('id','=', $id)
+                ->first();
+        $role = $data->role;
+        if ($role=="Admin"){
+            return view('dashboard',['data'=>$data]);
+        }elseif ($role=="User"){
+            return view('dashboard',['data'=>$data]);
+        }
     }
 }

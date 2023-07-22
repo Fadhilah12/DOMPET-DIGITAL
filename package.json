@@ -14,7 +14,6 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "bootstrap-icons": "^1.10.5",
-        "font-awesome": "^6.3.0"
+        "bootstrap-icons": "^1.10.5"
     }
 }
