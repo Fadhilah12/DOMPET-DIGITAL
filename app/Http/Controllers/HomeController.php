@@ -31,11 +31,9 @@ class HomeController extends Controller
                 ->first();
         $role = $data->role;
         if ($role=="Admin"){
-            return view('dashbord',['data'=>$data]);
+            return view('dashboard',['data'=>$data]);
         }elseif ($role=="User"){
-            return view('home',['data'=>$data]);
-        }elseif ($role=="PEMBELI"){
-            return view('home',['data'=>$data]);
+            return view('dashboard',['data'=>$data]);
         }
     }
 }
