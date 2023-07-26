@@ -48,8 +48,8 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                <a class="nav-link" href="layout-static.html">Tambah User</a>
+                                <a class="nav-link" href="layout-sidenav-light.html">Show User</a>
                             </nav>
                         </div>
                         @elseif(auth()->check() && auth()->user()->role === 'User')
