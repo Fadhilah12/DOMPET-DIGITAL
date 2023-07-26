@@ -11,10 +11,10 @@ class PemasukanController extends Controller
      */
     public function index()
     {
-        $pageTitle = 'Create Pemasukan';
-        
-        return view('pemasukan.create');
-    }
+        $pageTitle = 'Index Pemasukan';
+
+        return view('pemasukan.index');
+    } 
 
     /**
      * Show the form for creating a new resource.
