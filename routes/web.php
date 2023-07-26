@@ -23,16 +23,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-<<<<<<< HEAD
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('dashboardsaldo', SaldoController::class)->name('dashboardsaldo');
 Route::resource('saldo', SaldoController::class);
 Route::resource('pemasukan', PemasukanController::class);
 Route::resource('kategori', KategoriController::class);
-=======
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/dashbord', [DashboardController::class, 'index'])->name('dashbord');
-Route::resource('pemasukan', PemasukanController::class);
-Route::resource('pengeluaran', PengeluaranController::class);
-
->>>>>>> deb9e45fb9592bbd0aa7c7cd71fd8103c36e7d5e
