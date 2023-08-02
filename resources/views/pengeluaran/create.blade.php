@@ -1,50 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $pageTitle }}</title>
-    @vite('resources/sass/app.scss')
-</head>
-<body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-        <div class="container">
-            <a href="{{ route('home') }}" class="navbar-brand mb-0 h1"><i class="bi-hexagon-fill me-2"></i> Data Master</a>
+@php
+    $currentRouteName = Route::currentRouteName();
+@endphp
 
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <hr class="d-lg-none text-white-50">
-
-                <ul class="navbar-nav flex-row flex-wrap">
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('employees.index') }}" class="nav-link">Employee List</a></li>
-                </ul>
-
-                <hr class="d-lg-none text-white-50">
-
-                <a href="{{ route('profile') }}" class="btn btn-outline-light my-2 ms-md-auto"><i class="bi-person-circle me-1"></i> My Profile</a>
-            </div>
+@vite('resources/sass/app.scss')
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-secondary">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="{{ route('home') }}">Diary Uang</a>
+        <!-- Sidebar Toggle-->
+        <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         </div>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> {{ Auth::user()->name }}</a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li> <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                         {{ __('Logout') }}
+                     </a>
+
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                         @csrf
+                     </form></li>
+                </ul>
+            </li>
+        </ul>
     </nav>
 
+
     <div class="container-sm mt-5">
-        <form action="{{ route('employees.store') }}" method="POST">
+        <form action="{{ route('kategoripengeluaran.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row justify-content-center">
                 <div class="p-5 bg-light rounded-3 border col-xl-6">
 
-                    @if ($errors->any())
+                    {{-- @if ($errors->any())
                         @foreach ($errors->all() as $error)
                             <div class="alert alert-danger alert-dismissible fade show">
                                {{ $error }}
                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endforeach
-                        @endif
+                        @endif --}}
 
                         <div class="mb-3 text-center">
                             <i class="bi-person-circle fs-1"></i>
@@ -53,26 +54,22 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input class="form-control" type="text" name="firstName" id="firstName" value="" placeholder="Enter First Name">
+                                <label for="namakategori" class="form-label">Nama Kategori</label>
+                                <input class="form-control" type="text" name="namakategori" id="namakategori" value="" placeholder="Enter Nama Kategori">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input class="form-control" type="text" name="lastName" id="lastName" value="" placeholder="Enter Last Name">
+                                <label for="kodekategori" class="form-label">Kode kategori</label>
+                                <input class="form-control" type="text" name="kodekategori" id="kodekategori" value="" placeholder="Enter Kode Kategori">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input class="form-control" type="text" name="email" id="email" value="" placeholder="Enter Email">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="age" class="form-label">Age</label>
-                                <input class="form-control" type="text" name="age" id="age" value="" placeholder="Enter Age">
+                                <label for="floatingTextarea">Deskripsi</label>
+                                <textarea class="form-control" placeholder="Deskripsi" name="deskripsi" id="deskripsi"></textarea>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-md-6 d-grid">
-                                <a href="{{ route('employees.index') }}" class="btn btn-outline-dark btn-lg mt-3"><i class="bi-arrow-left-circle me-2"></i> Cancel</a>
+                                <a href="{{ route('kategoripengeluaran.index') }}" class="btn btn-outline-dark btn-lg mt-3"><i class="bi-arrow-left-circle me-2"></i> Cancel</a>
                             </div>
                             <div class="col-md-6 d-grid">
                                 <button type="submit" class="btn btn-dark btn-lg mt-3"><i class="bi-check-circle me-2"></i> Save</button>
@@ -82,7 +79,11 @@
                 </div>
             </form>
         </div>
-
         @vite('resources/js/app.js')
-    </body>
-    </html>
+        @push('scripts')
+        <script type="module">
+            $(document).ready(function() {
+                $('#employeeTable').DataTable();
+            });
+        </script>
+    @endpush
