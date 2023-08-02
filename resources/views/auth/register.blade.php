@@ -8,6 +8,7 @@
             <img class="img-fluid me-4" src="{{ Vite::asset('resources/images/Group 55.png') }}" alt="main logo">
         </a>
 
+
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>

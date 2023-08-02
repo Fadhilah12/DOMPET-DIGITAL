@@ -1,6 +1,7 @@
 @php
     $currentRouteName = Route::currentRouteName();
 @endphp
+
 @vite('resources/sass/app.scss')
 <nav class="navbar shadow navbar-expand-lg ">
     <div class="container">
@@ -91,3 +92,4 @@
     </div>
   </section>
 @vite('resources/js/app.js')
+
