@@ -1,3 +1,4 @@
+
 @php
     $currentRouteName = Route::currentRouteName();
 @endphp
@@ -7,7 +8,6 @@
         <a href="#" class="navbar-brand mb-0 h1">
             <img class="img-fluid me-4" src="{{ Vite::asset('resources/images/Group 55.png') }}" alt="main logo">
         </a>
-
 
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
@@ -121,14 +121,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="Role" class="col-md-4 col-form-label text-md-end">Pilihan Role:</label>
-                            <div class="col-md-6">
-                                <select name="Role" id="Role">
-                                    <option value="">Pilih salah satu</option> <!-- Opsi opsional dengan value kosong -->
-                                    <option value="User">User</option>
-                                </select>
-                            </div>
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -143,3 +135,4 @@
     </div>
 </div>
 @vite('resources/js/app.js')
+

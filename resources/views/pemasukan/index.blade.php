@@ -11,7 +11,21 @@
                     <br>
                     <div class="col-lg-3 col-xl-2">
                         <div class="d-grid gap-2">
+
                             <a href="{{ route('pemasukan.create') }}" class="btn btn-primary rounded-pill" style="background-color: #58B079" >Tambah Pemasukan</a>
+                        </div>
+                    </div>
+                    <div class="row mb-0">
+                        <div class="col-lg-9 col-xl-6">
+                        </div>
+                        <div class="col-lg-3 col-xl-6">
+                            <ul class="list-inline mb-0 float-end">
+                                <li class="list-inline-item">
+                                    <a href="{{ route('pemasukan.exportPdf') }}" class="btn btn-outline-danger">
+                                        <i class="bi bi-download me-1"></i> to PDF
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <br>
@@ -32,22 +46,23 @@
                                 $counter = 1;
                             @endphp
 
-                                @foreach ($pemasukan as $pemasukans)
+                                @foreach ($pemasukans as $pemasukan)
                                 <tr>
                                     <td>{{ $counter }}</td>
-                                    <td>{{ $pemasukans->kategorimasuk->nama_kategori }}</td>
-                                    <td>{{ $pemasukans->nominal	}}</td>
-                                    <td>{{ $pemasukans->deskripsi }}</td>
-                                    <td>{{ $pemasukans->tanggal_pemasukan }}</td>
+
+                                    <td>{{ $pemasukan->kategorimasuk->nama_kategori }}</td>
+                                    <td>{{ $pemasukan->nominal	}}</td>
+                                    <td>{{ $pemasukan->deskripsi }}</td>
+                                    <td>{{ $pemasukan->tanggal_pemasukan }}</td>
+                                    <td>{{ $pemasukan->user->name }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('pemasukan.show', ['pemasukan'=>$pemasukans->id]) }}" class="btn btn-outline-dark btn-sm
-                                                me-2"><i class="bi bi-card-text" method="POST"></i></a>
-                                                <a href="{{ route('pemasukan.edit', ['pemasukan'=>$pemasukans->id]) }}" class="btn btn-outline-dark btn-sm
+                                                <a href="{{ route('pemasukan.edit', ['pemasukan'=>$pemasukan->id]) }}" class="btn btn-outline-dark btn-sm
                                                     me-2"><i class="bi-pencil-square"></i></a>
                                             </div>
-                                            <form action="{{ route('pemasukan.destroy',['pemasukan' =>$pemasukans->id]) }}" method="POST"> @csrf @method('delete')
-                                            <button type="submit" class="btn btn-outline-danger btn-sm me-2"><i class="bi-trash"></i></button>
+                                            <form action="{{ route('pemasukan.destroy',['pemasukan' =>$pemasukan->id]) }}" method="POST"> @csrf @method('delete')
+                                            <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i class="bi-trash"></i></button>
+
                                             </form>
                                         </div>
                                     </div>

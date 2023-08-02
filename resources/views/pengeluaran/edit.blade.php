@@ -30,58 +30,64 @@
             </li>
         </ul>
     </nav>
-
     <div class="container-sm mt-5">
-        <<form action="{{ route('kategoripengeluaran.update',['kategoripengeluaran' => $kategorikeluars->id]) }}" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="kategori_id" id="kategori_id" value="{{ $kategorikeluars->kategori_id }}">
-    @method('put')
-        @csrf
-    <div class="row justify-content-center">
-        <div class="p-5 bg-light rounded-3 border col-xl-6">
-            <div class="mb-3 text-center">
-                <i class="bi-person-circle fs-1"></i>
-                <h4>Edit Employee</h4>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="namakategori" class="form-label">Nama Kategori</label>
-                    <input class="form-control @error('namakategori') is-invalid @enderror" type="text" name="namakategori" id="namakategori" value="{{ $errors->any() ? old('namakategori') : $kategorikeluars->nama_kategori }}" placeholder="Enter nama kategori">
-                    @error('namakategori')
-                <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-            </div>
-                <div class="col-md-6 mb-3">
-                    <label for="kodekategori" class="form-label">Kode kategori</label>
-                    <input class="form-control @error('kodekategori') is-invalid @enderror" type="text" name="kodekategori" id="kodekategori" value="{{ $errors->any() ? old('kodekategori') : $kategorikeluars->kode_kategori }}" placeholder="Enter Kode kategori">
-                    @error('kodekategori')
-                <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+        <form action="{{ route('pengeluaran.update',['pengeluaran' => $pengeluarans->id??'None']) }}" method="POST">
+            <input type="hidden" name="pengeluaran_id" id="pengeluaran_id" value="{{ $pengeluarans->pengeluaran_id??'None' }}">
+            @method('put')
+            @csrf
+            <div class="row justify-content-center">
+                <div class="p-5 bg-light rounded-3 border col-xl-6">
+
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show">
+                               {{ $error }}
+                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endforeach
+                    @endif
+
+                    <div class="mb-3 text-center">
+                        <i class="bi-person-circle fs-1"></i>
+                        <h4>Edit Data pengeluaran</h4>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="kategori" class="form-label">kategori</label>
+                            <select name="kategori_id" id="kategori_id" class="form-select">
+                            @foreach ($kategorikeluars as $tes)
+                            <option value="{{ $tes->id }}" {{ $tes->kategori_id == $tes->id ? 'selected' : '' }}>
+                                {{ $tes->kode_kategori . ' - ' . $tes->nama_kategori }}
+                            </option>
+                        </select>
+                        @endforeach
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="nominal" class="form-label">nominal</label>
+                            <input class="form-control" type="number" name="nominal" id="nominal" value="{{ $errors->any() ? old('nominal') : $pengeluarans->nominal??'None' }}" placeholder="Enter Last Name">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="floatingTextarea">Deskripsi</label>
+                            <textarea class="form-control" placeholder="Deskripsi" name="deskripsi" id="deskripsi">{{ $pengeluarans->deskripsi??'None' }}</textarea>
+                        </div>
+                        <input type="datetime-local" name="tanggal_pengeluaran" id="tanggal_pengeluaran" value="{{ $pengeluarans->tanggal_pemasukan??'None' }}">
+
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6 d-grid">
+                            <a href="{{ route('pengeluaran.index') }}" class="btn btn-outline-dark btn-lg mt-3"><i class="bi-arrow-left-circle me-2"></i> Cancel</a>
+                        </div>
+                        <div class="col-md-6 d-grid">
+                            <button type="submit" class="btn btn-dark btn-lg mt-3"><i class="bi-check-circle me-2"></i> Save</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="floatingTextarea">Deskripsi</label>
-                    <textarea class="form-control @error('email') is-invalid @enderror" placeholder="Deskripsi" name="deskripsi" id="deskripsi" >{{ $errors->any() ? old('email') : $kategorikeluars->deskripsi }}</textarea>
-                    @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                </div>
             </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-6 d-grid">
-                    <a href="{{ route('kategoripengeluaran.index') }}" class="btn btn-outline-dark btn-lg mt-3"><i class="bi-arrow-left-circle me-2"></i> Cancel</a>
-                </div>
-                <div class="col-md-6 d-grid">
-                    <button type="submit" class="btn btn-dark btn-lg mt-3"><i class="bi-check-circle me-2"></i> Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </form>
+        </form>
     </div>
 
-    </div>
-            </div>
         @vite('resources/js/app.js')
         @push('scripts')
         <script type="module">

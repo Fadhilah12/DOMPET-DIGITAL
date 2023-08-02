@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pengeluaran extends Model
 {
     use HasFactory;
-
     protected $fillabe = ['kategorikeluar','user','saldokeluar'];
 
     public function user(){
