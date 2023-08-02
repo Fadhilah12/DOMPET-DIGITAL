@@ -1,88 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{  $pageTitle }}</title>
-    @vite('resources/sass/app.scss')
-</head>
-<body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-        <div class="container">
-            <a href="{{ route('home') }}" class="navbar-brand mb-0 h1"><i class="bi-hexagon-fill me-2"></i> Data Master</a>
-
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <hr class="d-lg-none text-white-50">
-
-                <ul class="navbar-nav flex-row flex-wrap">
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('employees.index') }}" class="nav-link">Employee List</a></li>
-                </ul>
-
-                <hr class="d-lg-none text-white-50">
-
-                <a href="{{ route('profile') }}" class="btn btn-outline-light my-2 ms-md-auto"><i class="bi-person-circle me-1"></i> My Profile</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container-sm mt-5">
-        <form action="{{ route('employees.store') }}" method="POST">
-            @csrf
-            <div class="row justify-content-center">
-                <div class="p-5 bg-light rounded-3 border col-xl-6">
-
-                    @if ($errors->any())
-                        @foreach ($errors->all() as $error)
-                            <div class="alert alert-danger alert-dismissible fade show">
-                               {{ $error }}
-                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            @endforeach
-                        @endif
-
-                        <div class="mb-3 text-center">
-                            <i class="bi-person-circle fs-1"></i>
-                            <h4>Create Employee</h4>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input class="form-control" type="text" name="firstName" id="firstName" value="" placeholder="Enter First Name">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input class="form-control" type="text" name="lastName" id="lastName" value="" placeholder="Enter Last Name">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input class="form-control" type="text" name="email" id="email" value="" placeholder="Enter Email">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="age" class="form-label">Age</label>
-                                <input class="form-control" type="text" name="age" id="age" value="" placeholder="Enter Age">
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-6 d-grid">
-                                <a href="{{ route('employees.index') }}" class="btn btn-outline-dark btn-lg mt-3"><i class="bi-arrow-left-circle me-2"></i> Cancel</a>
-                            </div>
-                            <div class="col-md-6 d-grid">
-                                <button type="submit" class="btn btn-dark btn-lg mt-3"><i class="bi-check-circle me-2"></i> Save</button>
-                            </div>
+@php
+    $currentRouteName = Route::currentRouteName();
+@endphp
+@extends('layouts.app')
+@section('content')
+        <div id="layoutSidenav_content">
+            <main>
+                <br>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Pemasukan</h1>
+                    <br>
+                    <div class="col-lg-3 col-xl-2">
+                        <div class="d-grid gap-2">
+                            <a href="{{ route('pemasukan.create') }}" class="btn btn-primary rounded-pill" style="background-color: #58B079" >Tambah Pemasukan</a>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                    <br>
+                    <div class="table-responsive border p-3 rounded-3" style="background-color: #FDDDCB">
+                        <table class="table table-bordered table-hover table-striped mb-0 bg-white datatable" id="employeeTable">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>Nama Kategori</th>
+                                    <th>Nominal</th>
+                                    <th>Deskripsi</th>
+                                    <th>Tanggal</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                $counter = 1;
+                            @endphp
 
-        @vite('resources/js/app.js')
-    </body>
-    </html>
+                                @foreach ($pemasukan as $pemasukans)
+                                <tr>
+                                    <td>{{ $counter }}</td>
+                                    <td>{{ $pemasukans->kategorimasuk->nama_kategori }}</td>
+                                    <td>{{ $pemasukans->nominal	}}</td>
+                                    <td>{{ $pemasukans->deskripsi }}</td>
+                                    <td>{{ $pemasukans->tanggal_pemasukan }}</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <a href="{{ route('pemasukan.show', ['pemasukan'=>$pemasukans->id]) }}" class="btn btn-outline-dark btn-sm
+                                                me-2"><i class="bi bi-card-text" method="POST"></i></a>
+                                                <a href="{{ route('pemasukan.edit', ['pemasukan'=>$pemasukans->id]) }}" class="btn btn-outline-dark btn-sm
+                                                    me-2"><i class="bi-pencil-square"></i></a>
+                                            </div>
+                                            <form action="{{ route('pemasukan.destroy',['pemasukan' =>$pemasukans->id]) }}" method="POST"> @csrf @method('delete')
+                                            <button type="submit" class="btn btn-outline-danger btn-sm me-2"><i class="bi-trash"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </td>
+                                </tr>
+                                @php
+                                $counter++;
+                            @endphp
+                                @endforeach
+                                </tbody>
+                            </table>
+                    </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-center small">
+                        <div class="text-center">Copyright &copy; Iqbal 2023</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    @endsection
+        {{-- @push('scripts')
+        <script type="module">
+            $(document).ready(function() {
+                $('#employeeTable').DataTable();
+            });
+        </script>
+    @endpush --}}

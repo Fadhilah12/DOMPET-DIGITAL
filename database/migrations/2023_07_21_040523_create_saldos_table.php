@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('saldo', function (Blueprint $table) {
+        Schema::create('saldos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('total_saldo');
             $table->text('deskripsi');
             $table->timestamps();
         });
