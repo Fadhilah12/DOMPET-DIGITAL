@@ -9,6 +9,7 @@ class Pemasukan extends Model
 {
     use HasFactory;
 
+
     protected $fillabe = ['user','kategorimasuk_id','saldomasuk'];
     public function user(){
         return $this->belongsTo(User::class);

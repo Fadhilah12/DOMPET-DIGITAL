@@ -53,20 +53,16 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName" class="form-label">First Name</label>
+                                <label for="firstName" class="form-label">Namakategori</label>
                                 <input class="form-control" type="text" name="firstName" id="firstName" value="" placeholder="Enter First Name">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="lastName" class="form-label">Last Name</label>
+                                <label for="lastName" class="form-label">Nominal</label>
                                 <input class="form-control" type="text" name="lastName" id="lastName" value="" placeholder="Enter Last Name">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" class="form-label">Deskripsi</label>
                                 <input class="form-control" type="text" name="email" id="email" value="" placeholder="Enter Email">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="age" class="form-label">Age</label>
-                                <input class="form-control" type="text" name="age" id="age" value="" placeholder="Enter Age">
                             </div>
                         </div>
                         <hr>
