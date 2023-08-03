@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategorikeluar;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KategoripengeluaranController extends Controller
 {
@@ -15,6 +16,7 @@ class KategoripengeluaranController extends Controller
     {
         $pageTitle = 'halaman kategori';
         $kategoripengeluaran = Kategorikeluar::all();
+        confirmDelete();
         return view('kategoripengeluaran.index', [
             'pageTitle' => $pageTitle,
             'kategoripengeluaran' => $kategoripengeluaran
@@ -59,6 +61,8 @@ class KategoripengeluaranController extends Controller
         $kategoripengeluaran->kode_kategori = $request->kodekategori;
         $kategoripengeluaran->deskripsi = $request->deskripsi;
         $kategoripengeluaran->save();
+
+        Alert::success('Added Successfully', 'Category Data Added Successfully.');
 
         return redirect()->route('kategoripengeluaran.index');
     }
@@ -110,6 +114,8 @@ class KategoripengeluaranController extends Controller
         $kategorikeluars->deskripsi = $request->deskripsi;
         $kategorikeluars->save();
 
+        Alert::success('Changed Successfully', 'Category Data Changed Successfully.');
+
         return redirect()->route('kategoripengeluaran.index');
     }
 
@@ -119,6 +125,8 @@ class KategoripengeluaranController extends Controller
     public function destroy(string $id)
     {
         Kategorikeluar::find($id)->delete();
+
+        Alert::success('Deleted Successfully', 'Category Data Deleted Successfully.');
 
         return redirect()->route('kategoripengeluaran.index');
     }
