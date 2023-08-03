@@ -6,6 +6,7 @@ use App\Models\Kategorimasuk;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Kategoripemasukan;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KategoripemasukanController extends Controller
 {
@@ -16,6 +17,7 @@ class KategoripemasukanController extends Controller
     {
          $pageTitle = 'halaman kategori';
         $kategoripemasukan = Kategorimasuk::all();
+        confirmDelete();
         return view('kategoripemasukan.index', [
             'pageTitle' => $pageTitle,
             'kategoripemasukan' => $kategoripemasukan
@@ -61,6 +63,8 @@ class KategoripemasukanController extends Controller
         $kategoripemasukan->kode_kategori = $request->kodekategori;
         $kategoripemasukan->deskripsi = $request->deskripsi;
         $kategoripemasukan->save();
+
+        Alert::success('Added Successfully', 'Category Data Added Successfully.');
 
         return redirect()->route('kategoripemasukan.index');
     }
@@ -111,6 +115,8 @@ class KategoripemasukanController extends Controller
         $kategorimasuks->kode_kategori = $request->kodekategori;
         $kategorimasuks->deskripsi = $request->deskripsi;
         $kategorimasuks->save();
+
+        Alert::success('Changed Successfully', 'Employee Data Changed Successfully.');
 
         return redirect()->route('kategoripemasukan.index');
     }

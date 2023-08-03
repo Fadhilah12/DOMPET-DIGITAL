@@ -11,6 +11,7 @@ use App\Models\Saldomasuk;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
 
 
@@ -23,6 +24,7 @@ class PemasukanController extends Controller
     {
         $pageTitle = 'halaman kategori';
         $pemasukans = Pemasukan::all();
+        confirmDelete();
         return view('pemasukan.index', [
             'pageTitle' => $pageTitle,
             'pemasukans' => $pemasukans
@@ -87,6 +89,7 @@ class PemasukanController extends Controller
 
         $saldomasuk->save();
 
+        Alert::success('Added Successfully', 'Income Data Added Successfully.');
 
         return redirect()->route('pemasukan.index',[
         ]);
@@ -157,6 +160,7 @@ class PemasukanController extends Controller
 
         $saldomasuk->save();
 
+        Alert::success('Changed Successfully', 'Income Data Changed Successfully.');
 
         return redirect()->route('pemasukan.index',[
         ]);
@@ -176,6 +180,8 @@ class PemasukanController extends Controller
             // Then delete the Pemasukan record
             $pemasukan->delete();
         }
+
+        Alert::success('Deleted Successfully', 'Income Data Deleted Successfully.');
 
         return redirect()->route('pemasukan.index');
 

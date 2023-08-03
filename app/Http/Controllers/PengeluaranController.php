@@ -10,6 +10,7 @@ use App\Models\Saldokeluar;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
 
 class PengeluaranController extends Controller
@@ -21,6 +22,7 @@ class PengeluaranController extends Controller
     {
         $pageTitle = 'halaman kategori';
         $pengeluarans = Pengeluaran::all();
+        confirmDelete();
         return view('pengeluaran.index', [
             'pageTitle' => $pageTitle,
             'pengeluaran' => $pengeluarans
@@ -93,6 +95,7 @@ class PengeluaranController extends Controller
 
         $saldoKeluar->save();
 
+        Alert::success('Added Successfully', 'Expenditure Data Added Successfully.');
 
         return redirect()->route('pengeluaran.index',[
         ]);
@@ -163,6 +166,7 @@ class PengeluaranController extends Controller
 
         $saldomasuk->save();
 
+        Alert::success('Changed Successfully', 'Expenditure Data Changed Successfully.');
 
         return redirect()->route('pengeluaran.index',[
         ]);
@@ -174,6 +178,8 @@ class PengeluaranController extends Controller
     public function destroy(string $id)
     {
         Pengeluaran::find($id)->delete();
+
+    Alert::success('Deleted Successfully', 'Expenditure Data Deleted Successfully.');
 
     return redirect()->route('pengeluaran.index');
 

@@ -82,7 +82,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-center small">
-                        <div class="text-center">Copyright &copy; Iqbal 2023</div>
+                        <div class="text-center">Copyright &copy; Kelompok 10 2023</div>
                     </div>
                 </div>
             </footer>
@@ -96,3 +96,32 @@
             });
         </script>
     @endpush --}}
+
+    @push('scripts')
+    <script type="module">
+        $(document).ready(function() {
+
+            ...
+
+            $(".datatable").on("click", ".btn-delete", function (e) {
+                e.preventDefault();
+
+                var form = $(this).closest("form");
+                var name = $(this).data("name");
+
+                Swal.fire({
+                    title: "Are you sure want to delete\n" + name + "?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "bg-primary",
+                    confirmButtonText: "Yes, delete it!",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
+@endpush
