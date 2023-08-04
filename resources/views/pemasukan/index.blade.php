@@ -12,7 +12,7 @@
                     <div class="col-lg-3 col-xl-2">
                         <div class="d-grid gap-2">
 
-                            <a href="{{ route('pemasukan.create') }}" class="btn btn-primary rounded-pill" style="background-color: #58B079" >Tambah Pemasukan</a>
+                            <a href="{{ route('pemasukan.create') }}" class="btn btn-success rounded-pill" style="background-color: #58B079" >Tambah Pemasukan</a>
                         </div>
                     </div>
                     <div class="row mb-0">

@@ -12,7 +12,7 @@
                     <br>
                     <div class="col-lg-3 col-xl-2">
                         <div class="d-grid gap-2">
-                            <a href="{{ route('pengeluaran.create') }}" class="btn btn-success">Create Pengeluaran</a>
+                            <a href="{{ route('pengeluaran.create') }}" class="btn btn-success rounded-pill" style="background-color: #58B079">Tambah Pengeluaran</a>
                         </div>
                     </div>
                     <div class="row mb-0">
