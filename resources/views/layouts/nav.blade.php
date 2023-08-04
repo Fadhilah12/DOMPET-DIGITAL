@@ -32,7 +32,7 @@
 
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <nav class="sb-sidenav accordion sb-sidenav-danger" style="background-color:#CA3B44" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading text-white">Dashboard</div>
@@ -44,27 +44,33 @@
                     <div class="sb-sidenav-menu-heading text-white">Manajemen</div>
                     @if(auth()->check() && auth()->user()->role === 'Admin')
                     <a class="nav-link active collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts2">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Manajemen Kategori
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <div class="sb-nav-link-icon text-white"><i class="fas fa-columns"></i></div>
+                        <div class="sb-sidenav-menu-heading text-white">Manajemen Kategori</div>
+                        <div class="sb-sidenav-collapse-arrow text-white"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseLayouts2" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('kategoripemasukan.index') }}">Kategori Pemasukan</a>
-                            <a class="nav-link @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('kategoripengeluaran.index') }}">Kategori Pengeluaran</a>
+                            <a class="nav-link @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('kategoripemasukan.index') }}">
+                                <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open"></i></div>
+                                <div class="sb-sidenav-menu text-white">Kategori Pemasukan</div></a>
+                                
+                            <a class="nav-link @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('kategoripengeluaran.index') }}">
+                                <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open"></i></div>
+                                <div class="sb-sidenav-menu text-white">Kategori Pengeluaran</div></a>
+
                         </nav>
                     </div>
                     @endif
                     @if(auth()->check() && auth()->user()->role === 'User')
                     <a class="nav-link active collapsed @if($currentRouteName == 'pemasukan.index') active @endif" href="{{ route('pemasukan.index') }}"  data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Manajemen pemasukan
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open"></i></div>
+                        <div class="sb-sidenav-menu text-white">Manajemen pemasukan</div>
+                        <div class="sb-sidenav-collapse-arrow text-white"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <a class="nav-link active collapsed @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('pengeluaran.index') }}" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Manajemen pengeluaran
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open "></i></div>
+                        <div class="sb-sidenav-menu text-white">Manajemen pengeluaran</div>
+                        <div class="sb-sidenav-collapse-arrow text-white"><i class="fas fa-angle-down"></i></div>
                     </a>
                     @endif
                     <!-- <div class="sb-sidenav-menu-heading text-white">Addons</div>

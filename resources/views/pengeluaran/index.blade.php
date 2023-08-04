@@ -12,7 +12,7 @@
                     <br>
                     <div class="col-lg-3 col-xl-2">
                         <div class="d-grid gap-2">
-                            <a href="{{ route('pengeluaran.create') }}" class="btn btn-success">Create Pengeluaran</a>
+                            <a href="{{ route('pengeluaran.create') }}" class="btn btn-success rounded-pill" style="background-color: #58B079">Tambah Pengeluaran</a>
                         </div>
                     </div>
                     <div class="row mb-0">
@@ -82,7 +82,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-center small">
-                        <div class="text-center">Copyright &copy; Iqbal 2023</div>
+                        <div class="text-center">Copyright &copy; Kelompok 10 2023</div>
                     </div>
                 </div>
             </footer>
@@ -96,3 +96,32 @@
             });
         </script>
     @endpush --}}
+
+    @push('scripts')
+    <script type="module">
+        $(document).ready(function() {
+
+            ...
+
+            $(".datatable").on("click", ".btn-delete", function (e) {
+                e.preventDefault();
+
+                var form = $(this).closest("form");
+                var name = $(this).data("name");
+
+                Swal.fire({
+                    title: "Are you sure want to delete\n" + name + "?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "bg-primary",
+                    confirmButtonText: "Yes, delete it!",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
+@endpush
