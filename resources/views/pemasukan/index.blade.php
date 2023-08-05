@@ -41,11 +41,11 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 @php
                                 $counter = 1;
                             @endphp
-
                                 @foreach ($pemasukans as $pemasukan)
                                 <tr>
                                     <td>{{ $counter }}</td>
@@ -54,12 +54,13 @@
                                     <td>{{ $pemasukan->nominal	}}</td>
                                     <td>{{ $pemasukan->deskripsi }}</td>
                                     <td>{{ $pemasukan->tanggal_pemasukan }}</td>
-                                    <td>{{ $pemasukan->user->name }}</td>
                                     <td>
                                         <div class="d-flex">
                                                 <a href="{{ route('pemasukan.edit', ['pemasukan'=>$pemasukan->id]) }}" class="btn btn-outline-dark btn-sm
                                                     me-2"><i class="bi-pencil-square"></i></a>
                                             </div>
+                                            <a href="{{ route('pemasukan.show', ['pemasukan'=>$pemasukan->id]) }}"  class="btn btn-outline-dark btn-sm
+                                                me-2" ><i class="bi-person-lines-fill" method="POST"></i></a>
                                             <form action="{{ route('pemasukan.destroy',['pemasukan' =>$pemasukan->id]) }}" method="POST"> @csrf @method('delete')
                                             <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i class="bi-trash"></i></button>
 

@@ -40,6 +40,8 @@
                                         <div class="d-flex">
                                             <a href="{{ route('kategoripemasukan.edit', ['kategoripemasukan'=>$kategorimasuks->id]) }}" class="btn btn-outline-dark btn-sm
                                                 me-2"><i class="bi-pencil-square"></i></a>
+                                                <a href="{{ route('kategoripemasukan.show', ['kategoripemasukan'=>$kategorimasuks->id]) }}"  class="btn btn-outline-dark btn-sm
+                                                    me-2" ><i class="bi-person-lines-fill" method="POST"></i></a>
                                         </div>
                                             </div>
                                             <form action="{{ route('kategoripemasukan.destroy',['kategoripemasukan' =>$kategorimasuks->id]) }}" method="POST"> @csrf @method('delete')

@@ -54,15 +54,14 @@
                                     <td>{{ $pengeluarans->nominal	}}</td>
                                     <td>{{ $pengeluarans->deskripsi }}</td>
                                     <td>{{ $pengeluarans->tanggal_pengeluaran }}</td>
-                                    <td>{{ $pengeluarans->user->name }}</td>
                                     <td>
                                         <div class="d-flex">
                                                 <a href="{{ route('pengeluaran.edit', ['pengeluaran'=>$pengeluarans->id]) }}" class="btn btn-outline-dark btn-sm
                                                     me-2"><i class="bi-pencil-square"></i></a>
+
                                             </div>
-                                            <form action="{{ route('pengeluaran.destroy',['pengeluaran' =>$pengeluarans->id]) }}" method="POST"> @csrf @method('delete')
-                                            <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i class="bi-trash"></i></button>
-                                            </form>
+                                            <a href="{{ route('pengeluaran.show', ['pengeluaran'=>$pengeluarans->id]) }}"  class="btn btn-outline-dark btn-sm
+                                                me-2" ><i class="bi-person-lines-fill" method="POST"></i></a>
 
                                         </div>
                                         <form action="{{ route('pengeluaran.destroy',['pengeluaran' =>$pengeluarans->id]) }}" method="POST"> @csrf @method('delete')
