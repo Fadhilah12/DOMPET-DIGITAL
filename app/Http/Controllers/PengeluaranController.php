@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PengeluaranExport;
 
 class PengeluaranController extends Controller
 {
@@ -194,6 +196,11 @@ class PengeluaranController extends Controller
         $pdf = PDF::loadView('pengeluaran.export_pdf', compact('pengeluaran'));
 
         return $pdf->download('pengeluaran.pdf');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new PengeluaranExport, 'Pengeluaran.xlsx');
     }
 
 }
