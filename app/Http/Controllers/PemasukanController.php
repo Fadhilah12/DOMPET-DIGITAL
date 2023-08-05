@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PemasukanExport;
+
 
 
 class PemasukanController extends Controller
@@ -202,6 +205,11 @@ $saldomasuk->save();
         $pdf = PDF::loadView('pemasukan.export_pdf', compact('pemasukan'));
 
         return $pdf->download('pemasukan.pdf');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new PemasukanExport, 'Pemasukan.xlsx');
     }
 
 }

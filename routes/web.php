@@ -63,3 +63,5 @@ Route::group(['middleware' => 'auth','Admin'], function() {
 Route::get('exportPdf1', [PemasukanController::class, 'exportPdf1'])->name('pemasukan.exportPdf');
 Route::get('exportPdf2', [PengeluaranController::class, 'exportPdf2'])->name('pengeluaran.exportPdf');
 
+Route::get('exportExcel', [PemasukanController::class, 'exportExcel'])->name('pemasukan.exportExcel');
+Route::get('exportExcel', [PengeluaranController::class, 'exportExcel'])->name('pengeluaran.exportExcel');
