@@ -35,7 +35,7 @@
                         <div class="col-lg-3 col-xl-6">
                             <ul class="list-inline mb-0 float-end">
                                 <li class="list-inline-item">
-                                    <a href="{{ route('pengeluaran.exportPdf') }}" class="btn btn-outline-danger">
+                                    <a href="{{ route('pengeluaran.exportPdf2') }}" class="btn btn-outline-danger">
                                         <i class="bi bi-download me-1"></i> to PDF
                                     </a>
                                 </li>

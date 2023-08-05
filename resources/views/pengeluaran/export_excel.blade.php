@@ -12,10 +12,10 @@
         @foreach ($pengeluaran as $index => $pengeluarans)
             <tr>
                 <td>{{ $index + 1 }}</td>
-                <td>{{ $pengeluaran->Nama Kategori }}</td>
-                <td>{{ $pengeluaran->Nominal }}</td>
-                <td>{{ $pengeluaran->Deskripsi }}</td>
-                <td>{{ $pengeluaran->Tanggal pengeluaran }}</td>
+                <td>{{ $pengeluarans->kategorikeluar->nama_kategori }}</td>
+                <td>{{ 'Rp'.'.'.$pengeluarans->nominal }}</td>
+                <td>{{ $pengeluarans->deskripsi }}</td>
+                <td>{{ $pengeluarans->tanggal_pengeluaran }}</td>
             </tr>
         @endforeach
     </tbody>

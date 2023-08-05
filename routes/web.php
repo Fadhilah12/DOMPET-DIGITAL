@@ -60,8 +60,8 @@ Route::group(['middleware' => 'auth','Admin'], function() {
   });
 
 
-Route::get('exportPdf1', [PemasukanController::class, 'exportPdf1'])->name('pemasukan.exportPdf');
-Route::get('exportPdf2', [PengeluaranController::class, 'exportPdf2'])->name('pengeluaran.exportPdf');
+Route::get('exportPdf', [PemasukanController::class, 'exportPdf'])->name('pemasukan.exportPdf');
+Route::get('exportPdf2', [PengeluaranController::class, 'exportPdf2'])->name('pengeluaran.exportPdf2');
 
-Route::get('exportExcel', [PemasukanController::class, 'exportExcel'])->name('pemasukan.exportExcel');
+Route::get('exportExcel1', [PemasukanController::class, 'exportExcel1'])->name('pemasukan.exportExcel1');
 Route::get('exportExcel', [PengeluaranController::class, 'exportExcel'])->name('pengeluaran.exportExcel');

@@ -22,7 +22,7 @@
                         <div class="col-lg-3 col-xl-6">
                             <ul class="list-inline mb-0 float-end">
                                 <li class="list-inline-item">
-                                    <a href="{{ route('pemasukan.exportExcel') }}" class="btn btn-outline-success">
+                                    <a href="{{ route('pemasukan.exportExcel1') }}" class="btn btn-outline-success">
                                         <i class="bi bi-download me-1"></i> to Excel
                                     </a>
                                 </li>

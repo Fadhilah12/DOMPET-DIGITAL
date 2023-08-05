@@ -198,7 +198,7 @@ $saldomasuk->save();
 
     }
 
-    public function exportPdf1()
+    public function exportPdf()
     {
         $pemasukan = Pemasukan::all();
 
@@ -207,7 +207,7 @@ $saldomasuk->save();
         return $pdf->download('pemasukan.pdf');
     }
 
-    public function exportExcel()
+    public function exportExcel1()
     {
         return Excel::download(new PemasukanExport, 'Pemasukan.xlsx');
     }
