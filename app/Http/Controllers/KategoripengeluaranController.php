@@ -72,7 +72,10 @@ class KategoripengeluaranController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pageTitle = 'Create Kategori';
+        $kategorikeluars = Kategorikeluar::find($id);
+
+        return view('kategoripengeluaran.show', compact('pageTitle','kategorikeluars'));
     }
 
     /**

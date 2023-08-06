@@ -37,6 +37,10 @@ class HomeController extends Controller
             // var_dump($id);die;
             return view('dashboard', ['data' => $data]);
         }elseif ($role=="User"){
+            $id = Auth::user()->id;
+            $data = DB::table('users')
+            ->where('id','=', $id)
+            ->first();
             $pemasukans = Pemasukan::where('id')->first();
             $saldomasuks = Saldomasuk::where('user_id',$id)->get();
             $totalpemasukan = $saldomasuks->sum('totalmasuk');

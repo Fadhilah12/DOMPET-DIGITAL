@@ -74,7 +74,11 @@ class KategoripemasukanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pageTitle = 'Create Kategori';
+        $kategorimasuk= Kategorimasuk::find($id);
+
+
+        return view('kategoripemasukan.show', compact('pageTitle','kategorimasuk'));
     }
 
     /**
@@ -116,7 +120,7 @@ class KategoripemasukanController extends Controller
         $kategorimasuks->deskripsi = $request->deskripsi;
         $kategorimasuks->save();
 
-        Alert::success('Changed Successfully', 'Employee Data Changed Successfully.');
+        Alert::success('Update Successfully', 'Employee Data Changed Successfully.');
 
         return redirect()->route('kategoripemasukan.index');
     }
@@ -126,6 +130,10 @@ class KategoripemasukanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Kategorimasuk::find($id)->delete();
+
+        Alert::success('Deleted Successfully', 'Category Data Deleted Successfully.');
+
+        return redirect()->route('kategoripemasukan.index');
     }
 }

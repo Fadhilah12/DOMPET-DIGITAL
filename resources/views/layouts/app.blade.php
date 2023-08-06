@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Diary Uang</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -28,6 +28,7 @@
     @yield('content')
     @include('sweetalert::alert')
     @stack('scripts')
+    @include('layouts.footer')
     @vite('resources/js/app.js')
 </body>
 </html>

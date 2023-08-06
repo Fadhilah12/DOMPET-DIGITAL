@@ -12,7 +12,7 @@
                     <br>
                     <div class="col-lg-3 col-xl-2">
                         <div class="d-grid gap-2">
-                            <a href="{{ route('pengeluaran.create') }}" class="btn btn-success">Create Pengeluaran</a>
+                            <a href="{{ route('pengeluaran.create') }}" class="btn btn-success rounded-pill" style="background-color: #58B079">Tambah Pengeluaran</a>
                         </div>
                     </div>
                     <div class="row mb-0">
@@ -21,7 +21,13 @@
                         <div class="col-lg-3 col-xl-6">
                             <ul class="list-inline mb-0 float-end">
                                 <li class="list-inline-item">
-                                    <a href="{{ route('pengeluaran.exportPdf') }}" class="btn btn-outline-danger">
+                                    <a href="{{ route('pemasukan.exportExcel1') }}" class="btn btn-outline-success">
+                                        <i class="bi bi-download me-1"></i> to Excel
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">|</li>
+                                <li class="list-inline-item">
+                                    <a href="{{ route('pemasukan.exportPdf') }}" class="btn btn-outline-danger">
                                         <i class="bi bi-download me-1"></i> to PDF
                                     </a>
                                 </li>
@@ -29,7 +35,7 @@
                         </div>
                     </div>
                     <br>
-                    </div>
+                    <div>
                     <div class="table-responsive border p-3 rounded-3" style="background-color: #FDDDCB">
                         <table class="table table-bordered table-hover table-striped mb-0 bg-white datatable" id="employeeTable">
                             <thead>
@@ -39,7 +45,6 @@
                                     <th>Nominal</th>
                                     <th>Deskripsi</th>
                                     <th>Tanggal pemasukan</th>
-                                    <th>Username</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -54,20 +59,17 @@
                                     <td>{{ $pengeluarans->nominal	}}</td>
                                     <td>{{ $pengeluarans->deskripsi }}</td>
                                     <td>{{ $pengeluarans->tanggal_pengeluaran }}</td>
-                                    <td>{{ $pengeluarans->user->name }}</td>
                                     <td>
                                         <div class="d-flex">
-                                                <a href="{{ route('pengeluaran.edit', ['pengeluaran'=>$pengeluarans->id]) }}" class="btn btn-outline-dark btn-sm
-                                                    me-2"><i class="bi-pencil-square"></i></a>
+                                            <a href="{{ route('pengeluaran.edit', ['pengeluaran'=>$pengeluarans->id])  }}" class="btn btn-outline-dark btn-sm
+                                                me-2"><i class="bi-pencil-square"></i></a>
+                                                <a href="{{ route('pengeluaran.show', ['pengeluaran'=>$pengeluarans->id]) }}"  class="btn btn-outline-dark btn-sm
+                                                    me-2" ><i class="bi bi-file-earmark-text" method="POST"></i></a>
                                             </div>
                                             <form action="{{ route('pengeluaran.destroy',['pengeluaran' =>$pengeluarans->id]) }}" method="POST"> @csrf @method('delete')
-                                            <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i class="bi-trash"></i></button>
+                                            <button type="submit" class="btn btn-outline-danger btn-sm me-2"><i class="bi-trash"></i></button>
                                             </form>
-
                                         </div>
-                                        <form action="{{ route('pengeluaran.destroy',['pengeluaran' =>$pengeluarans->id]) }}" method="POST"> @csrf @method('delete')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm me-2"><i class="bi-trash"></i></button>
-                                        </form>
                                     </div>
                                 </td>
                                 </tr>
@@ -79,13 +81,6 @@
                             </table>
                     </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-center small">
-                        <div class="text-center">Copyright &copy; Kelompok 10 2023</div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
     @endsection

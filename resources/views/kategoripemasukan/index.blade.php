@@ -3,17 +3,17 @@
 
         <div id="layoutSidenav_content">
             <main>
+                <br>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Kategori</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Kategori</li>
-                    </ol>
+                    <h1 class="mt-4">Kategori Pemasukan</h1>
+                    <br>
                     <div class="col-lg-3 col-xl-2">
                         <div class="d-grid gap-2">
-                            <a href="{{ route('kategoripemasukan.create') }}" class="btn btn-primary">Create Kategori pemasukan</a>
+                            <a href="{{ route('kategoripemasukan.create') }}" class="btn btn-success rounded-pill" style="background-color: #58B079">Tambah Kategori pemasukan</a>
                         </div>
+                        <br>
                     </div>
-                    <div class="table-responsive border p-3 rounded-3">
+                    <div class="table-responsive border p-3 rounded-3" style="background-color: #FDDDCB">
                         <table class="table table-bordered table-hover table-striped mb-0 bg-white datatable" id="employeeTable">
                             <thead>
                                 <tr>
@@ -39,10 +39,12 @@
                                         <div class="d-flex">
                                             <a href="{{ route('kategoripemasukan.edit', ['kategoripemasukan'=>$kategorimasuks->id]) }}" class="btn btn-outline-dark btn-sm
                                                 me-2"><i class="bi-pencil-square"></i></a>
+                                                <a href="{{ route('kategoripemasukan.show', ['kategoripemasukan'=>$kategorimasuks->id]) }}"  class="btn btn-outline-dark btn-sm
+                                                    me-2" ><i class="bi bi-file-earmark-text" method="POST"></i></a>
                                         </div>
                                             </div>
                                             <form action="{{ route('kategoripemasukan.destroy',['kategoripemasukan' =>$kategorimasuks->id]) }}" method="POST"> @csrf @method('delete')
-                                            <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i class="bi-trash"></i></button>
+                                            <button type="submit" class="btn btn-outline-danger btn-sm me-2"><i class="bi-trash"></i></button>
                                             </form>
                                         </div>
                                     </div>
@@ -55,15 +57,7 @@
                                 </tbody>
                             </table>
                     </div>
-
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-center small">
-                        <div class="text-center">Copyright &copy; Iqbal 2023</div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
     @endsection

@@ -42,7 +42,7 @@
             <tr>
                 <td align="center"> {{ $counter }}</td>
                 <td>{{ $pengeluarans->kategorikeluar->nama_kategori }}</td>
-                <td>{{ $pengeluarans->nominal	}}</td>
+                <td>{{ 'Rp'.'.'.$pengeluarans->nominal	}}</td>
                 <td>{{ $pengeluarans->deskripsi }}</td>
                 <td>{{ $pengeluarans->tanggal_pengeluaran }}</td>
             </tr>
