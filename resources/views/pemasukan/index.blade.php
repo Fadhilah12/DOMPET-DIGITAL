@@ -15,9 +15,9 @@
                             <a href="{{ route('pemasukan.create') }}" class="btn btn-success rounded-pill" style="background-color: #58B079" >Tambah Pemasukan</a>
                         </div>
                     </div>
+
                     <div class="row mb-0">
                         <div class="col-lg-9 col-xl-6">
-                            <h4 class="mb-3">{{ $pageTitle }}</h4>
                         </div>
                         <div class="col-lg-3 col-xl-6">
                             <ul class="list-inline mb-0 float-end">
@@ -26,14 +26,7 @@
                                         <i class="bi bi-download me-1"></i> to Excel
                                     </a>
                                 </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row mb-0">
-                        <div class="col-lg-9 col-xl-6">
-                        </div>
-                        <div class="col-lg-3 col-xl-6">
-                            <ul class="list-inline mb-0 float-end">
+                                <li class="list-inline-item">|</li>
                                 <li class="list-inline-item">
                                     <a href="{{ route('pemasukan.exportPdf') }}" class="btn btn-outline-danger">
                                         <i class="bi bi-download me-1"></i> to PDF
@@ -91,13 +84,6 @@
                             </table>
                     </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-center small">
-                        <div class="text-center">Copyright &copy; Kelompok 10 2023</div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
     @endsection

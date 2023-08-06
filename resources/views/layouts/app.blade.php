@@ -28,6 +28,7 @@
     @yield('content')
     @include('sweetalert::alert')
     @stack('scripts')
+    @include('layouts.footer')
     @vite('resources/js/app.js')
 </body>
 </html>

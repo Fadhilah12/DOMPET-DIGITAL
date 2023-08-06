@@ -47,6 +47,9 @@
                 <p class="fs-5 mt-3">"Diary Uang" adalah website yang dapat digunakan untuk mengetahui berapa total pengeluaran dan pemasukkan setiap harinya, juga mengetahui jumlah saldo yang dimiliki. Website ini terbentuk pada tahun 2023 oleh tim pengembang yang luar biasa. Kami hadir untuk membantu anda dalam mengelola keuangan.</p>
                 <p class="fs-5 mt-3">Tidak usah khawatir dengan keamanan data anda karena kami mempunyai kebijakan privasi untuk tidak menyebarluaskan data pengguna dan hanya menggunakannya untuk kepentingan pengguna.</p>
                 <p class="fs-5 mt-3">Kunjungi kami pada media sosial untuk mengetahui lebih lanjut tentang “Diary Uang” ini dan anda dapat bertanya-tanya mengenai website kami di media sosial.</p>
+                <a href="{{ url('/') }}" class="h3">
+                    <i class="bi bi-instagram">&ensp;Instagram Diary Uang</i>
+                </a>
                 <br>
             </div>
         </div>
