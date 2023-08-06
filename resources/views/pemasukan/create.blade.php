@@ -15,14 +15,14 @@
             <div class="row justify-content-center"  >
                 <div class="p-4 rounded-4 border col-xl-6" style="background-color: #FDDDCB" >
 
-                    @if ($errors->any())
+                    {{-- @if ($errors->any())
                         @foreach ($errors->all() as $error)
                             <div class="alert alert-danger alert-dismissible fade show">
                                {{ $error }}
                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endforeach
-                        @endif
+                        @endif --}}
 
                         <div class="mb-3 text-center" >
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v12H3V6m9 3a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3M7 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2H7Z"/></svg>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="nominal" class="form-label">Nominal</label>
-                                <input class="form-control" type="number" name="nominal" id="nominal" value="" placeholder="Masukkan harga">
+                                <input class="form-control" type="number" name="nominal" id="nominal" value="" placeholder="Masukkan Harga">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="floatingTextarea">Deskripsi</label>

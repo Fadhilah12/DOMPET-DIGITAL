@@ -9,12 +9,12 @@
     @method('put')
         @csrf
     <div class="row justify-content-center">
-        <div class="p-5 bg-light rounded-3 border col-xl-6">
+        <div class="p-5 rounded-3 border col-xl-6" style="background-color: #FDDDCB">
             <div class="mb-3 text-center">
-                <i class="bi-person-circle fs-1"></i>
-                <h4>Edit Employee</h4>
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"/><path d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3l8.385-8.415zM16 5l3 3"/></g></svg>
+                <h4>Edit Kategori Pengeluaran</h4>
             </div>
-            <hr>
+            <hr style="border: 3px solid #CA3B44;">
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="namakategori" class="form-label">Nama Kategori</label>
@@ -24,7 +24,7 @@
                     @enderror
             </div>
                 <div class="col-md-6 mb-3">
-                    <label for="kodekategori" class="form-label">Kode kategori</label>
+                    <label for="kodekategori" class="form-label">Kode Kategori</label>
                     <input class="form-control @error('kodekategori') is-invalid @enderror" type="text" name="kodekategori" id="kodekategori" value="{{ $errors->any() ? old('kodekategori') : $kategorikeluars->kode_kategori }}" placeholder="Enter Kode kategori">
                     @error('kodekategori')
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -38,13 +38,13 @@
                         @enderror
                 </div>
             </div>
-            <hr>
+            <hr style="border: 3px solid #CA3B44;">
             <div class="row">
                 <div class="col-md-6 d-grid">
-                    <a href="{{ route('kategoripengeluaran.index') }}" class="btn btn-outline-dark btn-lg mt-3"><i class="bi-arrow-left-circle me-2"></i> Cancel</a>
+                    <a href="{{ route('kategoripengeluaran.index') }}" class="btn btn-danger btn-lg mt-3"><i class="bi-arrow-left-circle me-2"></i> Cancel</a>
                 </div>
                 <div class="col-md-6 d-grid">
-                    <button type="submit" class="btn btn-dark btn-lg mt-3"><i class="bi-check-circle me-2"></i> Save</button>
+                    <button type="submit" class="btn btn-success btn-lg mt-3"><i class="bi-check-circle me-2"></i> Save</button>
                 </div>
             </div>
         </div>
