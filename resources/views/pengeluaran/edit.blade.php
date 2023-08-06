@@ -4,7 +4,7 @@
 
 @vite('resources/sass/app.scss')
     <div class="container-sm mt-5">
-        <form action="{{ route('pengeluaran.update',['pengeluaran' => $pengeluaran->id]) }}" method="POST">
+        <form action="{{ route('pengeluaran.update',['pengeluaran' => $pengeluaran->id]) }}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="pengeluaran_id" id="pengeluaran_id" value="{{ $pengeluaran->pemasukan_id }}">
             @method('put')
             @csrf
@@ -58,6 +58,19 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                         </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="struk" class="form-label">Struk Pengeluaran</label>
+                            @if ($pengeluaran->original_filename)
+                                <h5>{{ $pengeluaran->original_filename }}</h5>
+                                <a href="{{ route('pengeluarans.downloadFile', ['pengeluaranId' => $pengeluaran->id]) }}" class="btn btn-primary btn-sm mt-2">
+                                    <i class="bi bi-download me-1"></i> Download Struk
+                                </a>
+                            @else
+                                <h5>Tidak ada</h5>
+                            @endif
+                        </div>
+
                     </div>
                     <hr style="border: 3px solid #CA3B44;">
                     <div class="row">

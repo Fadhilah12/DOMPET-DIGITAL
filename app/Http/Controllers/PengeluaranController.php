@@ -9,6 +9,7 @@ use App\Models\Pengeluaran;
 use App\Models\Saldokeluar;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
@@ -68,6 +69,17 @@ class PengeluaranController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // Get File
+        $file = $request->file('cv');
+
+        if ($file != null) {
+            $originalFilename = $file->getClientOriginalName();
+            $encryptedFilename = $file->hashName();
+
+            // Store File
+            $file->store('public/files');
+        }
+
         // ELOQUENT
         $pengeluarans = New Pengeluaran();
         $saldos = New Saldokeluar();
@@ -91,6 +103,10 @@ class PengeluaranController extends Controller
             $saldoKeluar->totalkeluar = $request->nominal;
         }
 
+        if ($file != null) {
+            $pengeluaran->original_filename = $originalFilename;
+            $pengeluaran->encrypted_filename = $encryptedFilename;
+        }
 
         // $saldomasuk = Saldomasuk::where('pemasukan_id',$saldomasuk)
         // ->get; // Jumlah saldo bertambah sesuai nominal pemasukan
@@ -151,28 +167,52 @@ class PengeluaranController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-           // Dapatkan Data Pemasukan dan Saldo Masuk yang akan diupdate
-    $pengeluaran = Pengeluaran::find($id);
-    $saldokeluar = Saldokeluar::where('pengeluaran_id', $id)->first();
+        $file = $request->file('struk');
+
+        if ($file != null) {
+            $originalFilename = $file->getClientOriginalName();
+            $encryptedFilename = $file->hashName();
+        }
+
+        // Dapatkan Data Pemasukan dan Saldo Masuk yang akan diupdate
+        $pengeluaran = Pengeluaran::find($id);
+        $saldokeluar = Saldokeluar::where('pengeluaran_id', $id)->first();
 
 
-    // Update Data Pemasukan
-    $pengeluaran->kategorikeluar_id = $request->kategori_id;
-    $pengeluaran->nominal = $request->nominal;
-    $pengeluaran->deskripsi = $request->deskripsi;
-    $pengeluaran->tanggal_pengeluaran = $request->tanggal_pengeluaran;
-    $pengeluaran->user_id = Auth::id();
-    $pengeluaran->save();
+        // Update Data Pemasukan
+        $pengeluaran->kategorikeluar_id = $request->kategori_id;
+        $pengeluaran->nominal = $request->nominal;
+        $pengeluaran->deskripsi = $request->deskripsi;
+        $pengeluaran->tanggal_pengeluaran = $request->tanggal_pengeluaran;
+        $pengeluaran->user_id = Auth::id();
+        $pengeluaran->save();
 
-    // Update Data Saldo Masuk
-    $saldokeluar->user_id = Auth::id();
-    $saldokeluar->totalkeluar = $request->nominal;
-    $saldokeluar->save();
+        // Update Data Saldo Masuk
+        $saldokeluar->user_id = Auth::id();
+        $saldokeluar->totalkeluar = $request->nominal;
+        $saldokeluar->save();
+
+        if ($request->hasFIle('struk')) {
+            $file = $request->file('struk');
+
+            //simpan file baru
+            $file->store('public/files');
+
+            //Hapus file lama
+            Storage::delete('public/files/'.$pengeluaran->encrypted_filename);
+
+            // Update nama file baru dalam model
+            if ($file != null) {
+                $pengeluaran->original_filename = $originalFilename;
+                $pengeluaran->encrypted_filename = $encryptedFilename;
+            }
+
+        }
 
 
         Alert::success('Update Successfully', 'Expenditure Data Changed Successfully.');
 
-     return redirect()->route('pengeluaran.index')->with('success', 'Data updated successfully.');
+        return redirect()->route('pengeluaran.index')->with('success', 'Data updated successfully.');
 
     }
 
@@ -201,6 +241,17 @@ class PengeluaranController extends Controller
     public function exportExcel()
     {
         return Excel::download(new PengeluaranExport, 'Pengeluaran.xlsx');
+    }
+
+    public function downloadFile($pengeluaranId)
+    {
+        $pengeluaran = Pengeluaran::find($pengeluaranId);
+        $encryptedFilename = 'public/files/'.$pengeluaran->encrypted_filename;
+        $downloadFilename = Str::lower($pengeluaran->user_id.'_cv.pdf');
+
+        if(Storage::exists($encryptedFilename)) {
+            return Storage::download($encryptedFilename, $downloadFilename);
+        }
     }
 
 }

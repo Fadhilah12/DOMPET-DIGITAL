@@ -9,6 +9,8 @@ use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\SaldoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,3 +67,5 @@ Route::get('exportPdf2', [PengeluaranController::class, 'exportPdf2'])->name('pe
 
 Route::get('exportExcel1', [PemasukanController::class, 'exportExcel1'])->name('pemasukan.exportExcel1');
 Route::get('exportExcel', [PengeluaranController::class, 'exportExcel'])->name('pengeluaran.exportExcel');
+
+Route::get('download-file/{pengeluaranId}', [PengeluaranController::class, 'downloadFile'])->name('pengeluarans.downloadFile');
