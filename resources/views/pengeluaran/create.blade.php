@@ -10,7 +10,7 @@
 <body>
 
     <div class="container-sm mt-5">
-        <form action="{{ route('pengeluaran.store') }}" method="POST">
+        <form action="{{ route('pengeluaran.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row justify-content-center">
                 <div class="p-5 bg-light rounded-3 border col-xl-6">
@@ -47,6 +47,11 @@
                                 <textarea class="form-control" placeholder="Deskripsi" name="deskripsi" id="deskripsi"></textarea>
                             </div>
                             <input type="datetime-local" name="tanggal_pengeluaran" id="tanggal_pengeluaran">
+
+                            <div class="col-md-12 mb-3">
+                                <label for="struk" class="form-label">Struk Pengeluaran</label>
+                                <input type="file" class="form-control" name="struk" id="struk">
+                            </div>
 
                         </div>
                         <hr>

@@ -27,6 +27,18 @@
                         <h5>{{ $pengeluaran->tanggal_pengeluaran }}</h5>
                     </div>
 
+                    <div class="col-md-12 mb-3">
+                        <label for="struk" class="form-label">Struk Pengeluaran</label>
+                        @if ($pengeluaran->original_filename)
+                            <h5>{{ $pengeluaran->original_filename }}</h5>
+                            <a href="{{ route('pengeluarans.downloadFile', ['pengeluaranId' => $pengeluaran->id]) }}" class="btn btn-primary btn-sm mt-2">
+                                <i class="bi bi-download me-1"></i> Download Struk
+                            </a>
+                        @else
+                            <h5>Tidak ada</h5>
+                        @endif
+                    </div>
+
                 </div>
                 <hr>
                 <div class="row">
