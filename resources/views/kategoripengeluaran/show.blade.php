@@ -6,21 +6,21 @@
             <div class="p-5 bg-light rounded-3 col-xl-4 border">
                 <div class="mb-3 text-center">
                     <i class="bi-person-circle fs-1"></i>
-                    <h4>Detail Data Pemasukan</h4>
+                    <h4>Detail Data Pengeluaran</h4>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="nama_kategori" class="form-label">Nama Kategori</label>
-                        <h5>{{ $kategorimasuk->nama_kategori }}</h5>
+                        <h5>{{ $kategorikeluars->nama_kategori }}</h5>
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="nominal" class="form-label">Nominal</label>
-                        <h5>{{ $kategorimasuk->kode_kategori }}</h5>
+                        <h5>{{ $kategorikeluars->kode_kategori }}</h5>
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="deskripsi" class="form-label">Deskripsi</label>
-                        <h5>{{ $kategorimasuk->deskripsi }}</h5>
+                        <h5>{{ $kategorikeluars->deskripsi }}</h5>
                     </div>
 
                 </div>

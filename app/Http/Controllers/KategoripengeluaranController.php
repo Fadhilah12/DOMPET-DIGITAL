@@ -75,7 +75,7 @@ class KategoripengeluaranController extends Controller
         $pageTitle = 'Create Kategori';
         $kategorikeluars = Kategorikeluar::find($id);
 
-        return view('kategoripenegluaran.edit', compact('pageTitle','kategorikeluar'));
+        return view('kategoripengeluaran.show', compact('pageTitle','kategorikeluars'));
     }
 
     /**
