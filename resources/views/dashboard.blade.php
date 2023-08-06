@@ -5,7 +5,7 @@
 @extends('layouts.app')
 @section('content')
 
-<body id="gradient3">
+<body>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
@@ -17,7 +17,7 @@
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">Saldo Anda saat ini</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <div class="text-white">Rp .{{ $total }}</div>
+                                    <div class="text-white">Rp. {{ $total }}</div>
                                 </div>
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                             <div class="card bg-warning text-white mb-4">
                                 <div class="card-body">Uang masuk</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <div class="text-white">Rp .{{  $saldomasuks }}</div>
+                                    <div class="text-white">Rp. {{  $saldomasuks }}</div>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">Uang keluar</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <div class="text-white">Rp . {{   $saldokeluars }}</div>
+                                    <div class="text-white">Rp. {{   $saldokeluars }}</div>
                                 </div>
                             </div>
                         </div>
