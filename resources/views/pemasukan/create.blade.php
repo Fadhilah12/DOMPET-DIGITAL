@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="nominal" class="form-label">Nominal</label>
-                                <input class="form-control" type="number" name="nominal" id="nominal" value="" placeholder="Masukkan harga">
+                                <input class="form-control" type="number" name="nominal" id="nominal" value="" placeholder="Masukkan Harga">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="floatingTextarea">Deskripsi</label>
