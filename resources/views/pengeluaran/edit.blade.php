@@ -3,33 +3,6 @@
 @endphp
 
 @vite('resources/sass/app.scss')
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-secondary">
-        <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{{ route('home') }}">Diary Uang</a>
-        <!-- Sidebar Toggle-->
-        <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        </div>
-        <!-- Navbar-->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> {{ Auth::user()->name }}</a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li> <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">
-                         {{ __('Logout') }}
-                     </a>
-
-                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                         @csrf
-                     </form></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
     <div class="container-sm mt-5">
         <form action="{{ route('pengeluaran.update',['pengeluaran' => $pengeluaran->id]) }}" method="POST">
             <input type="hidden" name="pengeluaran_id" id="pengeluaran_id" value="{{ $pengeluaran->pemasukan_id }}">
@@ -49,7 +22,7 @@
 
                     <div class="mb-3 text-center">
                         <i class="bi-person-circle fs-1"></i>
-                        <h4>Edit Pemasukan</h4>
+                        <h4>Edit Pengeluaran</h4>
                     </div>
                     <hr>
                     <div class="row">
@@ -79,7 +52,7 @@
                                 @enderror
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="tanggal_pengeluaran" class="form-label">Tanggal Pemasukan</label>
+                            <label for="tanggal_pengeluaran" class="form-label">Tanggal Pengeluaran</label>
                             <input class="form-control @error('tanggal_pengeluaran') is-invalid @enderror" type="datetime-local" name="tanggal_pengeluaran" id="tanggal_pengeluaran" value="{{ $errors->any() ? old('tanggal_pengeluaran', date('Y-m-d\TH:i', strtotime($pengeluaran->tanggal_pengeluaran))) : date('Y-m-d\TH:i') }}" placeholder="Enter tanggal_pengeluaran">
                             @error('tanggal_pengeluaran')
                             <div class="invalid-feedback">{{ $message }}</div>

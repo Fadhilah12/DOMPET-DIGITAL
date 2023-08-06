@@ -36,6 +36,7 @@
                         </div>
                     </div>
                     <br>
+                    <div>
                     <div class="table-responsive border p-3 rounded-3" style="background-color: #FDDDCB">
                         <table class="table table-bordered table-hover table-striped mb-0 bg-white datatable" id="employeeTable">
                             <thead>
@@ -63,14 +64,13 @@
                                     <td>{{ $pemasukan->tanggal_pemasukan }}</td>
                                     <td>
                                         <div class="d-flex">
-                                                <a href="{{ route('pemasukan.edit', ['pemasukan'=>$pemasukan->id]) }}" class="btn btn-outline-dark btn-sm
-                                                    me-2"><i class="bi-pencil-square"></i></a>
+                                            <a href="{{ route('pemasukan.edit', ['pemasukan'=>$pemasukan->id]) }}" class="btn btn-outline-dark btn-sm
+                                                me-2"><i class="bi-pencil-square"></i></a>
+                                                <a href="{{ route('pemasukan.show', ['pemasukan'=>$pemasukan->id]) }}"  class="btn btn-outline-dark btn-sm
+                                                    me-2" ><i class="bi bi-file-earmark-text" method="POST"></i></a>
                                             </div>
-                                            <a href="{{ route('pemasukan.show', ['pemasukan'=>$pemasukan->id]) }}"  class="btn btn-outline-dark btn-sm
-                                                me-2" ><i class="bi-person-lines-fill" method="POST"></i></a>
                                             <form action="{{ route('pemasukan.destroy',['pemasukan' =>$pemasukan->id]) }}" method="POST"> @csrf @method('delete')
-                                            <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i class="bi-trash"></i></button>
-
+                                            <button type="submit" class="btn btn-outline-danger btn-sm me-2"><i class="bi-trash"></i></button>
                                             </form>
                                         </div>
                                     </div>
