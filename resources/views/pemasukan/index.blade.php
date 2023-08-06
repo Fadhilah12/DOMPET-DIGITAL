@@ -45,7 +45,7 @@
                                     <th>Nama Kategori</th>
                                     <th>Nominal</th>
                                     <th>Deskripsi</th>
-                                    <th>Tanggal</th>
+                                    <th>Tanggal Pemasukan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
