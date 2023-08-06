@@ -50,11 +50,9 @@
                     <a class="btn btn-light btn-lg px-5" href="{{ route('login') }}" role="button">Login</a>
                     <a class="btn btn-success btn-lg px-5" href="{{ route('register') }}" role="button">Register</a>
                     <br><br>
-
                 </div>
             </div>
         </div>
-
     @vite('resources/js/app.js')
 </body>
 </html>

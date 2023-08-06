@@ -2,11 +2,10 @@
 @section('content')
         <div id="layoutSidenav_content">
             <main>
+                <br>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Kategori</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Kategori</li>
-                    </ol>
+                    <h1 class="mt-4">Kategori Pengeluaran</h1>
+                    <br>
                     <div class="col-lg-3 col-xl-2">
                         <div class="d-grid gap-2">
                             <a href="{{ route('kategoripengeluaran.create') }}" class="btn btn-success rounded-pill" style="background-color: #58B079">Tambah Kategori pengeluaran</a>
@@ -50,13 +49,6 @@
                             </table>
                     </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-center small">
-                        <div class="text-center">Copyright &copy; Kelompok 10 2023</div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
     @endsection
