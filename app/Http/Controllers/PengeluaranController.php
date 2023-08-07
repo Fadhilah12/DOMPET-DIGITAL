@@ -177,18 +177,39 @@ $saldoKeluar->save();
         $saldokeluar = Saldokeluar::where('pengeluaran_id', $id)->first();
 
 
-        // Update Data Pemasukan
-        $pengeluaran->kategorikeluar_id = $request->kategori_id;
-        $pengeluaran->nominal = $request->nominal;
-        $pengeluaran->deskripsi = $request->deskripsi;
-        $pengeluaran->tanggal_pengeluaran = $request->tanggal_pengeluaran;
-        $pengeluaran->user_id = Auth::id();
-        $pengeluaran->save();
+  // Update Data Pemasukan
+$pengeluaran->kategorikeluar_id = $request->kategori_id;
+$pengeluaran->nominal = $request->nominal;
+$pengeluaran->deskripsi = $request->deskripsi;
+$pengeluaran->tanggal_pengeluaran = $request->tanggal_pengeluaran;
+$pengeluaran->user_id = Auth::id();
 
-        // Update Data Saldo Masuk
-        $saldokeluar->user_id = Auth::id();
-        $saldokeluar->totalkeluar = $request->nominal;
-        $saldokeluar->save();
+// Cek apakah ada file CV yang diunggah
+if ($request->hasFile('struk')) {
+    // Hapus file CV lama jika ada
+    if ($pengeluaran->encrypted_filename) {
+        Storage::disk('public')->delete('files/' . $pengeluaran->encrypted_filename);
+    }
+
+    // Upload file CV yang baru
+    $file = $request->file('struk');
+    $originalFilename = $file->getClientOriginalName();
+    $encryptedFilename = $file->hashName();
+    $file->store('public/files');
+
+    $pengeluaran->original_filename = $originalFilename;
+    $pengeluaran->encrypted_filename = $encryptedFilename;
+}
+
+// Simpan perubahan pada data pengeluaran
+$pengeluaran->save();
+
+// Update Data Saldo Masuk
+if ($saldokeluar) {
+    $saldokeluar->user_id = Auth::id();
+    $saldokeluar->totalkeluar = $request->nominal;
+    $saldokeluar->save();
+}
 
         Alert::success('Update Successfully', 'Expenditure Data Changed Successfully.');
 
