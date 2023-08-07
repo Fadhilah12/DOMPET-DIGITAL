@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kategorimasuk;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -25,5 +26,6 @@ class KategoripemasukanSeeder extends Seeder
                 'deskripsi'=> 'penambahan modal',
             ],
         ]);
+        // Kategorimasuk::factory()->count(5)->create();
     }
 }

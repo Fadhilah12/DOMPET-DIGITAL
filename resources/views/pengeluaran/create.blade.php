@@ -51,13 +51,6 @@
                                 <input type="datetime-local" name="tanggal_pengeluaran" id="tanggal_pengeluaran">
                             </div>
 
-                            <input type="datetime-local" name="tanggal_pengeluaran" id="tanggal_pengeluaran">
-
-                            <div class="col-md-12 mb-3">
-                                <label for="struk" class="form-label">Struk Pengeluaran</label>
-                                <input type="file" class="form-control" name="struk" id="struk">
-                            </div>
-
                         </div>
                         <hr style="border: 3px solid #CA3B44;">
                         <div class="row">

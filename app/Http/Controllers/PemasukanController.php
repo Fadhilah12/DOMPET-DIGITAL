@@ -27,12 +27,15 @@ class PemasukanController extends Controller
     public function index()
     {
 
-        $id = Auth::user()->id;
-        $data = DB::table('users')
-        ->where('id','=', $id)
-        ->first();
+         // Retrieve the ID of the currently authenticated user
+         $id = Auth::user()->id;
+
+         // Fetch the user data from the 'users' table
+         $data = DB::table('users')
+             ->where('id', '=', $id)
+             ->first();
         $pageTitle = 'halaman kategori';
-        $pemasukans = Pemasukan::all();
+        $pemasukans = Pemasukan::where('user_id', $data->id)->get();
         confirmDelete();
         return view('pemasukan.index', [
             'data' => $data,

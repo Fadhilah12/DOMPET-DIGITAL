@@ -15,6 +15,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PengeluaranExport;
+use Illuminate\Support\Facades\DB;
 
 class PengeluaranController extends Controller
 {
@@ -23,10 +24,19 @@ class PengeluaranController extends Controller
      */
     public function index()
     {
+
+         // Retrieve the ID of the currently authenticated user
+         $id = Auth::user()->id;
+
+         // Fetch the user data from the 'users' table
+         $data = DB::table('users')
+             ->where('id', '=', $id)
+             ->first();
         $pageTitle = 'halaman kategori';
-        $pengeluarans = Pengeluaran::all();
+        $pengeluarans = Pengeluaran::where('user_id', $data->id)->get();
         confirmDelete();
         return view('pengeluaran.index', [
+            'data' => $data,
             'pageTitle' => $pageTitle,
             'pengeluaran' => $pengeluarans
         ]);
@@ -69,17 +79,6 @@ class PengeluaranController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Get File
-        $file = $request->file('cv');
-
-        if ($file != null) {
-            $originalFilename = $file->getClientOriginalName();
-            $encryptedFilename = $file->hashName();
-
-            // Store File
-            $file->store('public/files');
-        }
-
         // ELOQUENT
         $pengeluarans = New Pengeluaran();
         $saldos = New Saldokeluar();
@@ -101,11 +100,6 @@ class PengeluaranController extends Controller
             $saldoKeluar->pengeluaran_id = $pemasukanId;
             $saldoKeluar->user_id = Auth::id();
             $saldoKeluar->totalkeluar = $request->nominal;
-        }
-
-        if ($file != null) {
-            $pengeluaran->original_filename = $originalFilename;
-            $pengeluaran->encrypted_filename = $encryptedFilename;
         }
 
         // $saldomasuk = Saldomasuk::where('pemasukan_id',$saldomasuk)
@@ -167,13 +161,6 @@ class PengeluaranController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $file = $request->file('struk');
-
-        if ($file != null) {
-            $originalFilename = $file->getClientOriginalName();
-            $encryptedFilename = $file->hashName();
-        }
-
         // Dapatkan Data Pemasukan dan Saldo Masuk yang akan diupdate
         $pengeluaran = Pengeluaran::find($id);
         $saldokeluar = Saldokeluar::where('pengeluaran_id', $id)->first();
@@ -191,23 +178,6 @@ class PengeluaranController extends Controller
         $saldokeluar->user_id = Auth::id();
         $saldokeluar->totalkeluar = $request->nominal;
         $saldokeluar->save();
-
-        if ($request->hasFIle('struk')) {
-            $file = $request->file('struk');
-
-            //simpan file baru
-            $file->store('public/files');
-
-            //Hapus file lama
-            Storage::delete('public/files/'.$pengeluaran->encrypted_filename);
-
-            // Update nama file baru dalam model
-            if ($file != null) {
-                $pengeluaran->original_filename = $originalFilename;
-                $pengeluaran->encrypted_filename = $encryptedFilename;
-            }
-
-        }
 
 
         Alert::success('Update Successfully', 'Expenditure Data Changed Successfully.');
