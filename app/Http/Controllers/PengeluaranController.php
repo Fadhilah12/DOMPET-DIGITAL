@@ -80,48 +80,43 @@ class PengeluaranController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
  // Get File
- $file = $request->file('struk');
+$file = $request->file('struk');
 
- if ($file != null) {
-     $originalFilename = $file->getClientOriginalName();
-     $encryptedFilename = $file->hashName();
+if ($file != null) {
+    $originalFilename = $file->getClientOriginalName();
+    $encryptedFilename = $file->hashName();
 
-     // Store File
-     $file->store('public/files');
- }
+    // Store File
+    $file->store('public/files');
+}
 
-        // ELOQUENT
-        $pengeluarans = New Pengeluaran();
-        $saldos = New Saldokeluar();
-        $pengeluarans->kategorikeluar_id = $request->kategori_id;
-        $pengeluarans->nominal = $request->nominal;
-        $pengeluarans->deskripsi = $request->deskripsi;
-        $pengeluarans->tanggal_pengeluaran = $request->tanggal_pengeluaran;
-        $pengeluarans->user_id=Auth::id();
-        if ($file != null) {
-            $pengeluarans->original_filename = $originalFilename;
-            $pengeluarans->encrypted_filename = $encryptedFilename;
-        }
+// ELOQUENT
+$pengeluarans = new Pengeluaran();
+$pengeluarans->kategorikeluar_id = $request->kategori_id;
+$pengeluarans->nominal = $request->nominal;
+$pengeluarans->deskripsi = $request->deskripsi;
+$pengeluarans->tanggal_pengeluaran = $request->tanggal_pengeluaran;
+$pengeluarans->user_id = Auth::id();
+$pengeluarans->save();
 
-        $saldos->user_id=Auth::id();
-        $pengeluarans->save();
+$pemasukanId = $pengeluarans->id;
+$saldoKeluar = Saldokeluar::where('user_id', Auth::id())->first();
 
-        $pemasukanId = $pengeluarans->id;
-        $saldoKeluar = Saldokeluar::where('user_id', Auth::id())->first();
+if ($saldoKeluar) {
+    $saldoKeluar->totalkeluar += $request->nominal; // Menambahkan nominal ke total keluar
+} else {
+    $saldoKeluar = new Saldokeluar();
+    $saldoKeluar->pengeluaran_id = $pemasukanId;
+    $saldoKeluar->user_id = Auth::id();
+    $saldoKeluar->totalkeluar = $request->nominal;
+}
 
-        if ($saldoKeluar) {
-            $saldoKeluar->totalkeluar = $request->nominal;
-        } else {
-            $saldoKeluar = new Saldokeluar();
-            $saldoKeluar->pengeluaran_id = $pemasukanId;
-            $saldoKeluar->user_id = Auth::id();
-            $saldoKeluar->totalkeluar = $request->nominal;
-        }
+if ($file != null) {
+    $pengeluarans->original_filename = $originalFilename;
+    $pengeluarans->encrypted_filename = $encryptedFilename;
+}
 
-        // $saldomasuk = Saldomasuk::where('pemasukan_id',$saldomasuk)
-        // ->get; // Jumlah saldo bertambah sesuai nominal pemasukan
-
-        $saldoKeluar->save();
+$saldoKeluar->save();
 
         Alert::success('Added Successfully', 'Expenditure Data Added Successfully.');
 
