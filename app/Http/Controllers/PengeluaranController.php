@@ -10,6 +10,7 @@ use App\Models\Saldokeluar;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
@@ -78,6 +79,16 @@ class PengeluaranController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+ // Get File
+ $file = $request->file('struk');
+
+ if ($file != null) {
+     $originalFilename = $file->getClientOriginalName();
+     $encryptedFilename = $file->hashName();
+
+     // Store File
+     $file->store('public/files');
+ }
 
         // ELOQUENT
         $pengeluarans = New Pengeluaran();
@@ -87,6 +98,11 @@ class PengeluaranController extends Controller
         $pengeluarans->deskripsi = $request->deskripsi;
         $pengeluarans->tanggal_pengeluaran = $request->tanggal_pengeluaran;
         $pengeluarans->user_id=Auth::id();
+        if ($file != null) {
+            $pengeluarans->original_filename = $originalFilename;
+            $pengeluarans->encrypted_filename = $encryptedFilename;
+        }
+
         $saldos->user_id=Auth::id();
         $pengeluarans->save();
 
@@ -179,7 +195,6 @@ class PengeluaranController extends Controller
         $saldokeluar->totalkeluar = $request->nominal;
         $saldokeluar->save();
 
-
         Alert::success('Update Successfully', 'Expenditure Data Changed Successfully.');
 
         return redirect()->route('pengeluaran.index')->with('success', 'Data updated successfully.');
@@ -191,7 +206,19 @@ class PengeluaranController extends Controller
      */
     public function destroy(string $id)
     {
-        Pengeluaran::find($id)->delete();
+
+        $pengeluaran = Pengeluaran::find($id);
+
+        if ($pengeluaran) {
+            // Update 'pemasukan_id' to null in associated Saldomasuk records
+            Saldokeluar::where('pengeluaran_id', $pengeluaran->id)->update(['pengeluaran_id' => $id]);
+
+            // Then delete the Pemasukan record
+            $pengeluaran->delete();
+        }
+        if ($pengeluaran->encrypted_filename) {
+            Storage::disk('public')->delete('files/' . $pengeluaran->encrypted_filename);
+        }
 
     Alert::success('Deleted Successfully', 'Expenditure Data Deleted Successfully.');
 
@@ -217,7 +244,7 @@ class PengeluaranController extends Controller
     {
         $pengeluaran = Pengeluaran::find($pengeluaranId);
         $encryptedFilename = 'public/files/'.$pengeluaran->encrypted_filename;
-        $downloadFilename = Str::lower($pengeluaran->user_id.'_cv.pdf');
+        $downloadFilename = Str::lower($pengeluaran->user_id.'_struk.png');
 
         if(Storage::exists($encryptedFilename)) {
             return Storage::download($encryptedFilename, $downloadFilename);

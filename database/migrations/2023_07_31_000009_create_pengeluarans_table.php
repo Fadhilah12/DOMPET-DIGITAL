@@ -20,6 +20,8 @@ return new class extends Migration
             $table->dateTime('tanggal_pengeluaran');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->constrained();
+            $table->string('original_filename')->nullable();
+            $table->string('encrypted_filename')->nullable();
             $table->timestamps();
         });
     }
