@@ -46,9 +46,9 @@
     @endsection
         @vite('resources/js/app.js')
         @push('scripts')
-        <script type="module">
+        {{-- <script type="module">
             $(document).ready(function() {
                 $('#employeeTable').DataTable();
             });
-        </script>
+        </script> --}}
     @endpush
