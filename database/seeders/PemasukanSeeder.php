@@ -17,14 +17,14 @@ class PemasukanSeeder extends Seeder
             [
                 'kategorimasuk_id' => 1,
                 'nominal' => '100000',
-                'deskripsi' => 'ini bayar kos',
+                'deskripsi' => 'Uang kas Juli',
                 'tanggal_pemasukan' => '2023-07-27 20:36:00',
                 'user_id' => 2
             ],
             [
                 'kategorimasuk_id' => 2,
                 'nominal' => '200000',
-                'deskripsi' => 'ini bayar listirk',
+                'deskripsi' => 'Modal usaha',
                 'tanggal_pemasukan' => '2023-07-27 21:36:00',
                 'user_id' => 2
             ],

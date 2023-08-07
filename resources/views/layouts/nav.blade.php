@@ -53,7 +53,7 @@
                             <a class="nav-link @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('kategoripemasukan.index') }}">
                                 <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open"></i></div>
                                 <div class="sb-sidenav-menu text-white">Kategori Pemasukan</div></a>
-                                
+
                             <a class="nav-link @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('kategoripengeluaran.index') }}">
                                 <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open"></i></div>
                                 <div class="sb-sidenav-menu text-white">Kategori Pengeluaran</div></a>

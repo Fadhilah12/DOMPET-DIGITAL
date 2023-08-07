@@ -1,6 +1,11 @@
 @php
     $currentRouteName = Route::currentRouteName();
 @endphp
+
+<head>
+    <link rel="icon" href="{{ Vite::asset('resources/images/Diary Uang-01.png') }}">
+</head>
+
 @vite('resources/sass/app.scss')
     <nav class="navbar shadow navbar-expand-lg">
         <div class="container">
