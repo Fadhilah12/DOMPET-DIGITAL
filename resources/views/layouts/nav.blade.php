@@ -53,7 +53,7 @@
                             <a class="nav-link @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('kategoripemasukan.index') }}">
                                 <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open"></i></div>
                                 <div class="sb-sidenav-menu text-white">Kategori Pemasukan</div></a>
-                                
+
                             <a class="nav-link @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('kategoripengeluaran.index') }}">
                                 <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open"></i></div>
                                 <div class="sb-sidenav-menu text-white">Kategori Pengeluaran</div></a>
@@ -73,20 +73,6 @@
                         <div class="sb-sidenav-collapse-arrow text-white"><i class="fas fa-angle-down"></i></div>
                     </a>
                     @endif
-                    <!-- <div class="sb-sidenav-menu-heading text-white">Addons</div>
-                    <a class="nav-link" href="charts.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Charts
-                    </a>
-                    <a class="nav-link" href="tables.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Tables
-                    </a>
-                </div> -->
             </div>
-            <!-- <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                Start Bootstrap
-            </div> -->
         </nav>
     </div>
