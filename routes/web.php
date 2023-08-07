@@ -35,10 +35,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 // Route::get('dashboardsaldo', SaldoController::class)->name('dashboardsaldo');
-Route::resource('saldo', SaldoController::class)->middleware('role:Admin');
-Route::resource('pemasukan', PemasukanController::class)->middleware('role:Admin');
-// Route::resource('kategoripemasukan', KategoripemasukanController::class)->middleware('role:Admin');
-Route::resource('pengeluaran', PengeluaranController::class)->middleware('role:Admin');
+// Route::resource('saldo', SaldoController::class)->middleware('role:Admin');
+// Route::resource('pemasukan', PemasukanController::class)->middleware('role:Admin');
+// // Route::resource('kategoripemasukan', KategoripemasukanController::class)->middleware('role:Admin');
+// Route::resource('pengeluaran', PengeluaranController::class)->middleware('role:Admin');
 
 Route::group(['middleware' => 'auth','Admin'], function() {
     Route::resource('pemasukan', PemasukanController::class, ['except' => 'pemasukan,index']);
@@ -46,11 +46,6 @@ Route::group(['middleware' => 'auth','Admin'], function() {
     Route::resource('kategoripemasukan', KategoripemasukanController::class);
     Route::resource('kategoripengeluaran', KategoripengeluaranController::class);
     Route::resource('saldo',SaldoController::class,['except' => 'saldo,index']);
-
-    Route::get('getPemasukan', [PemasukanController::class, 'getData'])->name('pemasukan.getData');
-
-
-
   });
 
   Route::group(['middleware' => 'auth','User'], function() {
@@ -68,4 +63,4 @@ Route::get('exportPdf2', [PengeluaranController::class, 'exportPdf2'])->name('pe
 Route::get('exportExcel1', [PemasukanController::class, 'exportExcel1'])->name('pemasukan.exportExcel1');
 Route::get('exportExcel', [PengeluaranController::class, 'exportExcel'])->name('pengeluaran.exportExcel');
 
-Route::get('download-file/{pengeluaranId}', [PengeluaranController::class, 'downloadFile'])->name('pengeluarans.downloadFile');
+// Route::get('download-file/{pengeluaranId}', [PengeluaranController::class, 'downloadFile'])->name('pengeluarans.downloadFile');

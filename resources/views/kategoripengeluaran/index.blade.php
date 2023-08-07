@@ -24,9 +24,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                $counter = 1;
+                            @endphp
                                 @foreach ($kategoripengeluaran as $kategorikeluars)
                                 <tr>
-                                    <td>{{ $kategorikeluars->id }}</td>
+                                    <td>{{ $counter }}</td>
                                     <td>{{ $kategorikeluars->nama_kategori }}</td>
                                     <td>{{ $kategorikeluars->kode_kategori	}}</td>
                                     <td>{{ $kategorikeluars->deskripsi }}</td>
@@ -53,6 +56,9 @@
                                     </div>
                                     </td>
                                 </tr>
+                                @php
+                                $counter++;
+                            @endphp
                                 @endforeach
                                 </tbody>
                             </table>

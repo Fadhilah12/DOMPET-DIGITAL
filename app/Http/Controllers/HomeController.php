@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pemasukan;
 use App\Models\Saldomasuk;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +35,9 @@ class HomeController extends Controller
         $role = $data->role;
         if ($role=="Admin"){
             $id = Auth::user()->id;
+            $data = DB::table('users')
+            ->where('id','=', $id)
+            ->first();
             // var_dump($id);die;
             return view('dashboard', ['data' => $data]);
         }elseif ($role=="User"){
