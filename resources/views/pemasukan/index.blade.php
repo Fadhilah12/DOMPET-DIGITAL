@@ -38,7 +38,7 @@
                     <br>
                     <div>
                     <div class="table-responsive border p-3 rounded-3" style="background-color: #FDDDCB">
-                        <table class="table table-bordered table-hover table-striped mb-0 bg-white datatable" id="employeeTable">
+                        <table class="table table-bordered table-hover table-striped mb-0 bg-white datatable" id="pemasukanTable">
                             <thead>
                                 <tr class="text-center">
                                     <th>No</th>
@@ -94,4 +94,3 @@
         </div>
     </div>
     @endsection
-  
