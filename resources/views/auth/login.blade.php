@@ -3,7 +3,7 @@
 @endphp
 
 <head>
-    <link rel="icon" href="{{ Vite::asset('resources/images/Diary Uang-01.png') }}">
+    <link rel="icon" href="{{ Vite::asset('resources/images/diary_uang.png') }}">
 </head>
 
 @vite('resources/sass/app.scss')
