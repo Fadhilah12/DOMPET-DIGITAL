@@ -39,7 +39,7 @@
         <div class="container py-5 px-4">
             <div class="row">
                 <div class="col-md-5 order-md-2">
-                    <img class="img-fluid" src="{{ Vite::asset('resources/images/Diary Uang-01.png') }}" alt="main logo">
+                    <img class="img-fluid" src="{{ Vite::asset('resources/images/diary_uang.png') }}" alt="main logo">
                 </div>
                 <div class="col-md-7 order-md-1">
                     <h1 class="mt-4 display-5">Kelola keuangan Anda dengan mudah dan efisien, menggunakan</h1>
