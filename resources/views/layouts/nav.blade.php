@@ -5,10 +5,10 @@
 <nav class="sb-topnav navbar navbar-expand navbar-light bg-white" style="box-shadow: 1px 1px 8px rgba(54, 54, 54, 0.8)">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="{{ route('home') }}">
-        <img src="{{ Vite::asset('resources/images/Icon.png') }}" width="100" height="55">
+        <img src="{{ Vite::asset('resources/images/diary_uang.png') }}" width="100" height="75">
     </a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="bi bi-justify" style="font-size: 30px;"></i></i></button>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="bi bi-justify" style="font-size: 35px;"></i></i></button>
     <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
     </div>
     <!-- Navbar-->
@@ -32,7 +32,7 @@
 
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-danger" style="background-color:#CA3B44" id="sidenavAccordion">
+        <nav class="sb-sidenav accordion sb-sidenav-danger" style="background-color: #00619a" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading text-white">Dashboard</div>
@@ -63,14 +63,15 @@
                     @endif
                     @if(auth()->check() && auth()->user()->role === 'User')
                     <a class="nav-link active collapsed @if($currentRouteName == 'pemasukan.index') active @endif" href="{{ route('pemasukan.index') }}"  data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open"></i></div>
-                        <div class="sb-sidenav-menu text-white">Manajemen pemasukan</div>
-                        <div class="sb-sidenav-collapse-arrow text-white"><i class="fas fa-angle-down"></i></div>
+
+
+                        <div class="sb-sidenav-menu ms-3 text-white">Manajemen pemasukan</div>
+                        <div class="sb-sidenav-collapse-arrow text-white"><i class="bi bi-caret-down-fill px-2"></i></div>
                     </a>
                     <a class="nav-link active collapsed @if($currentRouteName == 'saldo.index') active @endif" href="{{ route('pengeluaran.index') }}" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon text-white"><i class="fas fa-book-open "></i></div>
-                        <div class="sb-sidenav-menu text-white">Manajemen pengeluaran</div>
-                        <div class="sb-sidenav-collapse-arrow text-white"><i class="fas fa-angle-down"></i></div>
+
+                        <div class="sb-sidenav-menu ms-3 text-white">Manajemen pengeluaran</div>
+                        <div class="sb-sidenav-collapse-arrow text-white"><i class="bi bi-caret-down-fill px-2"></i></div>
                     </a>
                     @endif
             </div>

@@ -12,7 +12,7 @@
                     <br>
                     <div class="col-lg-3 col-xl-2">
                         <div class="d-grid gap-2">
-                            <a href="{{ route('pengeluaran.create') }}" class="btn btn-success rounded-pill" style="background-color: #58B079">Tambah Pengeluaran</a>
+                            <a href="{{ route('pengeluaran.create') }}" class="btn btn btn-light rounded-pill fw-bold text-white" style="background-color: #59a5f5">Tambah Pengeluaran</a>
                         </div>
                     </div>
                     <div class="row mb-0">
@@ -36,7 +36,7 @@
                     </div>
                     <br>
                     <div>
-                    <div class="table-responsive border p-3 rounded-3" style="background-color: #FDDDCB">
+                    <div class="table-responsive border p-3 rounded-3" style="background-color: #f5f5f5">
                         <table class="table table-bordered table-hover table-striped mb-0 bg-white datatable" id="pengeluaranTable">
                             <thead>
                                 <tr class="text-center">
