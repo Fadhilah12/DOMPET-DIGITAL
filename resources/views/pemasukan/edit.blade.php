@@ -9,7 +9,7 @@
             @method('put')
             @csrf
             <div class="row justify-content-center">
-                <div class="p-4 rounded-4 border col-xl-6" style="background-color: #FDDDCB" >
+                <div class="p-4 rounded-4 border col-xl-6" style="background-color: #c8ffff" >
 
                     {{-- @if ($errors->any())
                         @foreach ($errors->all() as $error)
