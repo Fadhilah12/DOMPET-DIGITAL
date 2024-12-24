@@ -28,7 +28,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v12H3V6m9 3a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3M7 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2H7Z"/></svg>
                             <h4>Tambah Pengeluaran</h4>
                         </div>
-                        <hr style="border: 3px solid #CA3B44;">
+                        <hr style="border: 3px solid #c8ffff;">
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="kategori" class="form-label">Kategori</label>

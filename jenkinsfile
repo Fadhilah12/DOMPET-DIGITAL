@@ -1,0 +1,38 @@
+// filepath: /C:/laragon/www/SamijayaWebsite/jenkinsfile
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_COMPOSE = 'docker-compose' // Pastikan docker-compose tersedia di server Jenkins
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                echo 'Cloning Repository...'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Fadhilah12/DOMPET-DIGITAL.git', credentialsId: 'github-pat']]])
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                echo 'Building Docker Images...'
+                bat "${DOCKER_COMPOSE} build"
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                echo 'Running Tests...'
+                bat "${DOCKER_COMPOSE} run tests"
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying Application...'
+                bat "${DOCKER_COMPOSE} up -d"
+            }
+        }
+    }
+}
